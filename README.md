@@ -1,4 +1,4 @@
-# 💳 Flask Banking Management System
+# 💳 Flask Smart Banking Management System
 
 A simple and secure **Banking Web Application** built using **Python Flask** and **SQLite**. This system allows users to create accounts, deposit/withdraw money, and view balances. Admins can monitor all users and transactions.
 
