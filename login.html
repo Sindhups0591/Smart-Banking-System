@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card mx-auto" style="max-width: 400px;">
+  <div class="card-body">
+    <h3 class="card-title mb-4">Login</h3>
+    <form method="post" novalidate>
+      <div class="mb-3">
+        <label for="role" class="form-label">Login As</label>
+        <select class="form-select" name="role" id="role" required onchange="toggleAccountFields()">
+          <option value="user" selected>User</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <div id="user-fields">
+        <div class="mb-3">
+          <label for="account_id" class="form-label">Account ID</label>
+          <input type="text" class="form-control" name="account_id" id="account_id">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function toggleAccountFields() {
+  const role = document.getElementById('role').value;
+  const userFields = document.getElementById('user-fields');
+  if(role === 'admin') {
+    userFields.style.display = 'none';
+    document.getElementById('account_id').required = false;
+  } else {
+    userFields.style.display = 'block';
+    document.getElementById('account_id').required = true;
+  }
+}
+// Initialize on page load
+toggleAccountFields();
+</script>
+{% endblock %}

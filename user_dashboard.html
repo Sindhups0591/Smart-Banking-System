@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card mx-auto" style="max-width: 500px;">
+  <div class="card-body">
+    <h3 class="card-title mb-4">Hello, {{ user['name'] }}</h3>
+    <p><strong>Account ID:</strong> {{ user['account_id'] }}</p>
+    <p><strong>Balance:</strong> ₹{{ "%.2f"|format(user['balance']) }}</p>
+
+    <form method="post" action="{{ url_for('deposit') }}" class="mb-3">
+      <label for="deposit-amount" class="form-label">Deposit Amount (₹)</label>
+      <input type="number" step="0.01" min="0.01" class="form-control" name="amount" id="deposit-amount" required>
+      <button type="submit" class="btn btn-primary mt-2 w-100">Deposit</button>
+    </form>
+
+    <form method="post" action="{{ url_for('withdraw') }}">
+      <label for="withdraw-amount" class="form-label">Withdraw Amount (₹)</label>
+      <input type="number" step="0.01" min="0.01" class="form-control" name="amount" id="withdraw-amount" required>
+      <button type="submit" class="btn btn-primary mt-2 w-100">Withdraw</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
